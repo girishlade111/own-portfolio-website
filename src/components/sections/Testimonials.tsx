@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { TESTIMONIALS } from "@/lib/testimonials";
 import { cn } from "@/lib/utils";
 
@@ -80,10 +81,12 @@ export default function Testimonials() {
                 <div className="flex items-center gap-4">
                   {/* Avatar Placeholder / Image */}
                   {testimonial.avatar ? (
-                    <img 
+                    <Image 
                       src={testimonial.avatar} 
                       alt={testimonial.author} 
-                      className="w-9 h-9 rounded-full object-cover"
+                      width={36}
+                      height={36}
+                      className="rounded-full object-cover"
                     />
                   ) : (
                     <div className="w-9 h-9 rounded-full bg-card border border-gold/20 flex items-center justify-center shrink-0">
