@@ -125,7 +125,7 @@ export default function ProjectsClient() {
                     className="text-muted hover:text-primary transition-colors"
                     title="View Source"
                   >
-                    <Github className="w-4 h-4" />
+                    <Code2 className="w-4 h-4" />
                   </a>
                 )}
                 {project.liveUrl && (

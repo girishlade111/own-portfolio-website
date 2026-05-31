@@ -137,7 +137,7 @@ export default function Contact() {
                 className="group flex items-center justify-between w-full p-4 border border-border/50 bg-surface/30 rounded-sm hover:border-gold/30 hover:bg-surface/50 transition-all duration-300"
               >
                 <div className="flex items-center gap-4">
-                  <Twitter className="w-5 h-5 text-gold" />
+                  <MessageCircle className="w-5 h-5 text-gold" />
                   <span className="font-body text-primary font-medium">Twitter / X</span>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted group-hover:text-gold transition-colors" />
