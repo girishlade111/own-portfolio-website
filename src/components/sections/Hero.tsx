@@ -77,14 +77,12 @@ export default function Hero() {
             transition={{ delay: 0.65, duration: 0.8 }}
             className="flex flex-wrap items-center gap-4 mb-12"
           >
-            <Button 
-              asChild
-              className="bg-gold text-background hover:bg-gold-light rounded-sm px-8 py-6 h-auto font-body text-sm tracking-wide transition-colors duration-300"
+            <Link 
+              href="#projects"
+              className="inline-flex items-center justify-center bg-gold text-background hover:bg-gold-light rounded-sm px-8 py-6 h-auto font-body text-sm tracking-wide transition-colors duration-300"
             >
-              <Link href="#projects">
-                View My Work <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </Button>
+              View My Work <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
             <a 
               href={PERSONAL.resumeUrl} 
               download
