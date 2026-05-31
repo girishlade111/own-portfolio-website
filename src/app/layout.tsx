@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import { PERSONAL } from "@/lib/constants";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CustomCursor from "@/components/ui/CustomCursor";
+import Loader from "@/components/ui/Loader";
+import PageTransition from "@/components/layout/PageTransition";
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ["latin"], 
@@ -57,8 +60,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(cormorant.variable, dmSans.variable, jetbrainsMono.variable)}>
       <body className="noise-overlay antialiased">
+        <Loader />
+        <CustomCursor />
         <Navbar />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Footer />
       </body>
     </html>
