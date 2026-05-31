@@ -84,6 +84,7 @@ export default function Contact() {
               {/* Email (Copy to Clipboard) */}
               <button 
                 onClick={handleCopyEmail}
+                title="Click to copy"
                 className="group flex items-center justify-between w-full p-4 border border-border/50 bg-surface/30 rounded-sm hover:border-gold/30 hover:bg-surface/50 transition-all duration-300 text-left"
               >
                 <div className="flex items-center gap-4">
