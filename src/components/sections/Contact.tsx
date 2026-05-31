@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, Twitter, ArrowRight, Check } from "lucide-react";
+import { Mail, Code2, Briefcase, MessageCircle, ArrowRight, Check } from "lucide-react";
 import { PERSONAL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";

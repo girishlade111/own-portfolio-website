@@ -86,13 +86,12 @@ export default function Navbar() {
               );
             })}
           </ul>
-          <Button 
-            variant="outline" 
-            asChild
-            className="border-gold text-gold hover:bg-gold hover:text-background transition-colors duration-300 bg-transparent"
+          <Link 
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-lg px-6 py-2 text-sm font-medium border border-gold text-gold hover:bg-gold hover:text-background transition-colors duration-300 bg-transparent"
           >
-            <Link href="#contact">Hire Me</Link>
-          </Button>
+            Hire Me
+          </Link>
         </nav>
 
         {/* Mobile Toggle */}
