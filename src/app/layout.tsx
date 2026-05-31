@@ -3,6 +3,7 @@ import { Cormorant_Garamond, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { PERSONAL } from "@/lib/constants";
+import Navbar from "@/components/layout/Navbar";
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ["latin"], 
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(cormorant.variable, dmSans.variable, jetbrainsMono.variable)}>
       <body className="noise-overlay antialiased">
+        <Navbar />
         {children}
       </body>
     </html>
