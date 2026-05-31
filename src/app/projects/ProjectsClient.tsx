@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, Code2, ExternalLink } from "lucide-react";
 import { PROJECTS } from "@/lib/projects";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
