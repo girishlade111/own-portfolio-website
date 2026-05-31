@@ -1,12 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Check } from "lucide-react";
 import Link from "next/link";
 import { PERSONAL } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
 
 export default function Hero() {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Prevent immediate navigation so we can show state
+    setIsDownloading(true);
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 1500);
+  };
+
   return (
     <section 
       id="home" 
