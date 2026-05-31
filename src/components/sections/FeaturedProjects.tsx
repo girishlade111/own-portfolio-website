@@ -108,7 +108,7 @@ export default function FeaturedProjects() {
                           rel="noopener noreferrer"
                           className="flex items-center gap-2 font-body text-sm font-medium text-muted hover:text-primary transition-colors"
                         >
-                          <Github className="w-4 h-4" />
+                          <Code2 className="w-4 h-4" />
                           Source
                         </a>
                       )}
