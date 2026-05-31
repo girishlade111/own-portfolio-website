@@ -96,9 +96,14 @@ export default function Hero() {
             <a 
               href={PERSONAL.resumeUrl} 
               download
-              className="inline-flex items-center justify-center border border-gold text-gold hover:bg-gold hover:text-background bg-transparent rounded-sm px-8 py-6 h-auto font-body text-sm tracking-wide transition-colors duration-300"
+              onClick={handleDownload}
+              className="inline-flex items-center justify-center border border-gold text-gold hover:bg-gold hover:text-background bg-transparent rounded-sm px-8 py-6 h-auto font-body text-sm tracking-wide transition-colors duration-300 w-52"
             >
-              Download Resume <Download className="ml-2 w-4 h-4" />
+              {isDownloading ? (
+                <>Downloading... <Check className="ml-2 w-4 h-4" /></>
+              ) : (
+                <>Download Resume <Download className="ml-2 w-4 h-4" /></>
+              )}
             </a>
           </motion.div>
 

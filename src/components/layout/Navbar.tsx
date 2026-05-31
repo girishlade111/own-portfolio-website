@@ -76,11 +76,12 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "font-body text-sm font-medium transition-colors duration-200",
+                      "group relative font-body text-sm font-medium transition-colors duration-200 py-1",
                       isActive ? "text-gold" : "text-muted hover:text-gold"
                     )}
                   >
                     {link.label}
+                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
                   </Link>
                 </li>
               );
