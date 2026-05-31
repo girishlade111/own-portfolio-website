@@ -85,15 +85,13 @@ export default function Hero() {
                 View My Work <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
-            <Button 
-              variant="outline" 
-              asChild
-              className="border-gold text-gold hover:bg-gold hover:text-background bg-transparent rounded-sm px-8 py-6 h-auto font-body text-sm tracking-wide transition-colors duration-300"
+            <a 
+              href={PERSONAL.resumeUrl} 
+              download
+              className="inline-flex items-center justify-center border border-gold text-gold hover:bg-gold hover:text-background bg-transparent rounded-sm px-8 py-6 h-auto font-body text-sm tracking-wide transition-colors duration-300"
             >
-              <a href={PERSONAL.resumeUrl} download>
-                Download Resume <Download className="ml-2 w-4 h-4" />
-              </a>
-            </Button>
+              Download Resume <Download className="ml-2 w-4 h-4" />
+            </a>
           </motion.div>
 
           {/* Status Badge */}
@@ -116,5 +114,8 @@ export default function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
   );
 }
