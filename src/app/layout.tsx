@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { PERSONAL } from "@/lib/constants";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ["latin"], 
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body className="noise-overlay antialiased">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
