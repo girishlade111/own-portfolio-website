@@ -42,7 +42,7 @@ export default function About() {
 
             <div className="space-y-0 font-body text-secondary leading-[1.8] text-[1.05rem]">
               <p>
-                I'm Girish Lade, a developer from Pandharpur, Maharashtra — now building in Mumbai. I started with curiosity and zero roadmap, figuring out software the only way that works: by shipping things.
+                I&apos;m Girish Lade, a developer from Pandharpur, Maharashtra — now building in Mumbai. I started with curiosity and zero roadmap, figuring out software the only way that works: by shipping things.
               </p>
               
               <div className="w-[40px] h-[1px] bg-gold/30 my-6" />
@@ -54,7 +54,7 @@ export default function About() {
               <div className="w-[40px] h-[1px] bg-gold/30 my-6" />
               
               <p>
-                Right now I'm deep in building LadeStack's core suite. When I'm not shipping, I'm composing — I score cinematic music that lives in the space between hustle and momentum.
+                Right now I&apos;m deep in building LadeStack&apos;s core suite. When I&apos;m not shipping, I&apos;m composing — I score cinematic music that lives in the space between hustle and momentum.
               </p>
             </div>
 
