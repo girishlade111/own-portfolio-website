@@ -60,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(cormorant.variable, dmSans.variable, jetbrainsMono.variable)}>
       <body className="antialiased">
+        <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 99999, background: 'red', color: 'white', padding: '5px' }}>DEBUG: APP LOADED</div>
         {/* <Loader /> */}
         <CustomCursor />
         <Navbar />
