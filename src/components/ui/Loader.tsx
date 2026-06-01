@@ -6,20 +6,28 @@ import { cn } from "@/lib/utils";
 
 export default function Loader() {
   const [showLoader, setShowLoader] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("hasVisited");
-    if (!hasVisited) {
-      setShowLoader(true);
-      sessionStorage.setItem("hasVisited", "true");
+    setIsMounted(true);
+    try {
+      const hasVisited = sessionStorage.getItem("hasVisited");
+      if (!hasVisited) {
+        setShowLoader(true);
+        sessionStorage.setItem("hasVisited", "true");
 
-      const timer = setTimeout(() => {
-        setShowLoader(false);
-      }, 1800);
+        const timer = setTimeout(() => {
+          setShowLoader(false);
+        }, 1800);
 
-      return () => clearTimeout(timer);
+        return () => clearTimeout(timer);
+      }
+    } catch (error) {
+      console.error("Session storage access failed:", error);
     }
   }, []);
+
+  if (!isMounted) return null;
 
   return (
     <AnimatePresence>
