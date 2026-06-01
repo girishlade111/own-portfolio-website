@@ -72,7 +72,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
       published: data.published === true,
       content,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }

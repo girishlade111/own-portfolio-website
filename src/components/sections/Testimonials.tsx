@@ -113,9 +113,3 @@ export default function Testimonials() {
     </section>
   );
 }
-v>
-
-      </div>
-    </section>
-  );
-}
