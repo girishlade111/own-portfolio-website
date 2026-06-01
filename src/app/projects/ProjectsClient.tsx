@@ -35,7 +35,7 @@ export default function ProjectsClient() {
           All Projects
         </h1>
         <p className="font-body text-muted text-[1.1rem] max-w-2xl">
-          Everything I've built — products, experiments, and tools.
+          Everything I&apos;ve built — products, experiments, and tools.
         </p>
       </motion.div>
 
