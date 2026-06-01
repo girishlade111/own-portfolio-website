@@ -9,7 +9,7 @@ import { PERSONAL } from "@/lib/constants";
 export default function Hero() {
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleDownload = () => {
     // Prevent immediate navigation so we can show state
     setIsDownloading(true);
     setTimeout(() => {
@@ -62,17 +62,17 @@ export default function Hero() {
 
           {/* Main headline */}
           <motion.h1 
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.8 }}
-            className="font-display font-light text-foreground text-[clamp(3.5rem,8vw,7rem)] leading-none mb-6 tracking-tight"
+            className="font-display font-light text-primary text-[clamp(3.5rem,8vw,7rem)] leading-none mb-6 tracking-tight"
           >
             {PERSONAL.name}
           </motion.h1>
 
           {/* Sub-headline */}
           <motion.p 
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="font-body text-secondary text-[1.1rem] leading-[1.7] max-w-[480px] mb-10"
@@ -82,7 +82,7 @@ export default function Hero() {
 
           {/* CTAs */}
           <motion.div 
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.8 }}
             className="flex flex-wrap items-center gap-4 mb-12"
@@ -110,7 +110,7 @@ export default function Hero() {
           {/* Status Badge */}
           {PERSONAL.availableForWork && (
             <motion.div 
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.8 }}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-border/50"
