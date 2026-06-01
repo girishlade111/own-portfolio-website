@@ -60,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(cormorant.variable, dmSans.variable, jetbrainsMono.variable)}>
       <body className="antialiased">
-        <Loader />
+        {/* <Loader /> */}
         <CustomCursor />
         <Navbar />
         <PageTransition>{children}</PageTransition>
