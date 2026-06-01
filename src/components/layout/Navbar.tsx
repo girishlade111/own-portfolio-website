@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { PERSONAL, NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
