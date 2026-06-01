@@ -27,7 +27,7 @@ export default function FeaturedProjects() {
             {"Selected\nWork."}
           </h2>
           <p className="font-body text-muted max-w-[500px] text-[1.05rem]">
-            Things I've shipped. Some are live. Some are experiments.
+            Things I&apos;ve shipped. Some are live. Some are experiments.
           </p>
         </motion.div>
 
