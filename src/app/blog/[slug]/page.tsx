@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { HTMLAttributes, AnchorHTMLAttributes } from "react";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -23,22 +24,22 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 const components = {
-  h1: (props: any) => <h1 className="font-display text-4xl lg:text-5xl mt-12 mb-6 font-light text-primary" {...props} />,
-  h2: (props: any) => <h2 className="font-display text-3xl mt-10 mb-4 font-light text-primary" {...props} />,
-  h3: (props: any) => <h3 className="font-display text-2xl mt-8 mb-4 font-light text-primary" {...props} />,
-  p: (props: any) => <p className="font-body text-secondary text-[1.05rem] leading-[1.8] mb-6" {...props} />,
-  ul: (props: any) => <ul className="list-disc list-outside pl-6 mb-6 font-body text-secondary space-y-2" {...props} />,
-  ol: (props: any) => <ol className="list-decimal list-outside pl-6 mb-6 font-body text-secondary space-y-2" {...props} />,
-  li: (props: any) => <li className="pl-2" {...props} />,
-  a: (props: any) => <a className="text-gold hover:underline underline-offset-4" {...props} />,
-  blockquote: (props: any) => (
+  h1: (props: HTMLAttributes<HTMLHeadingElement>) => <h1 className="font-display text-4xl lg:text-5xl mt-12 mb-6 font-light text-primary" {...props} />,
+  h2: (props: HTMLAttributes<HTMLHeadingElement>) => <h2 className="font-display text-3xl mt-10 mb-4 font-light text-primary" {...props} />,
+  h3: (props: HTMLAttributes<HTMLHeadingElement>) => <h3 className="font-display text-2xl mt-8 mb-4 font-light text-primary" {...props} />,
+  p: (props: HTMLAttributes<HTMLParagraphElement>) => <p className="font-body text-secondary text-[1.05rem] leading-[1.8] mb-6" {...props} />,
+  ul: (props: HTMLAttributes<HTMLUListElement>) => <ul className="list-disc list-outside pl-6 mb-6 font-body text-secondary space-y-2" {...props} />,
+  ol: (props: HTMLAttributes<HTMLOListElement>) => <ol className="list-decimal list-outside pl-6 mb-6 font-body text-secondary space-y-2" {...props} />,
+  li: (props: HTMLAttributes<HTMLLIElement>) => <li className="pl-2" {...props} />,
+  a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => <a className="text-gold hover:underline underline-offset-4" {...props} />,
+  blockquote: (props: HTMLAttributes<HTMLElement>) => (
     <blockquote className="border-l-4 border-gold pl-6 py-1 my-8 italic font-display text-xl text-primary/80 bg-surface/30 rounded-r-sm" {...props} />
   ),
-  code: (props: any) => <code className="font-mono text-[0.85em] bg-card text-gold px-1.5 py-0.5 rounded-sm" {...props} />,
-  pre: (props: any) => (
+  code: (props: HTMLAttributes<HTMLElement>) => <code className="font-mono text-[0.85em] bg-card text-gold px-1.5 py-0.5 rounded-sm" {...props} />,
+  pre: (props: HTMLAttributes<HTMLPreElement>) => (
     <pre className="bg-card border border-border rounded-sm p-4 overflow-x-auto mb-8 font-mono text-sm leading-relaxed" {...props} />
   ),
-  strong: (props: any) => <strong className="font-medium text-primary" {...props} />,
+  strong: (props: HTMLAttributes<HTMLElement>) => <strong className="font-medium text-primary" {...props} />,
 };
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
