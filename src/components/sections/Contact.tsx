@@ -176,7 +176,7 @@ export default function Contact() {
                 </div>
                 <h3 className="font-display text-2xl text-primary mb-2">Message Sent</h3>
                 <p className="font-body text-secondary">
-                  Thanks for reaching out. I'll get back to you within 24 hours.
+                  Thanks for reaching out. I&apos;ll get back to you within 24 hours.
                 </p>
               </div>
             ) : (
