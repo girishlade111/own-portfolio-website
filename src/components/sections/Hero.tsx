@@ -110,7 +110,7 @@ export default function Hero() {
           {/* Status Badge */}
           {PERSONAL.availableForWork && (
             <motion.div 
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.8 }}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-border/50"
