@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { TESTIMONIALS } from "@/lib/testimonials";
-import { cn } from "@/lib/utils";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -73,7 +72,7 @@ export default function Testimonials() {
               {/* Content */}
               <div className="relative z-10">
                 <p className="font-body text-secondary italic leading-[1.8] text-[1rem] mb-6">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
 
                 <div className="w-[30px] h-[1px] bg-gold/50 mb-6" />
@@ -109,6 +108,12 @@ export default function Testimonials() {
             </motion.div>
           ))}
         </motion.div>
+
+      </div>
+    </section>
+  );
+}
+v>
 
       </div>
     </section>
