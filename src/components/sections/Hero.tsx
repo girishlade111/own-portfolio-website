@@ -62,7 +62,7 @@ export default function Hero() {
 
           {/* Main headline */}
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.8 }}
             className="font-display font-light text-foreground text-[clamp(3.5rem,8vw,7rem)] leading-none mb-6 tracking-tight"
@@ -72,7 +72,7 @@ export default function Hero() {
 
           {/* Sub-headline */}
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="font-body text-secondary text-[1.1rem] leading-[1.7] max-w-[480px] mb-10"
