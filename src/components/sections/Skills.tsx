@@ -1,137 +1,265 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { SKILLS } from "@/lib/skills";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 
-const skillRowVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.4 } 
-  }
-};
-
-const barVariants = {
-  hidden: { width: 0 },
-  visible: (level: number) => ({
-    width: `${level}%`,
-    transition: { duration: 1, ease: "easeOut" }
-  })
-};
-
-const percentVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { delay: 1, duration: 0.5 } }
-};
-
-export default function Skills() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-20%" });
+// Animated progress bar — triggers only when in viewport
+function SkillBar({ name, level, index }: { name: string; level: number; index: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="skills" className="py-[120px] relative overflow-hidden bg-surface/30">
-      {/* Background faded text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-light text-[20vw] leading-none text-gold/[0.02] pointer-events-none select-none z-0 whitespace-nowrap">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 10 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: index * 0.07, duration: 0.4 }}
+      style={{ marginBottom: "1.25rem" }}
+    >
+      {/* Skill name + percentage */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          marginBottom: "0.5rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.875rem",
+            color: "var(--text-primary)",
+            fontWeight: 400,
+          }}
+        >
+          {name}
+        </span>
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: index * 0.07 + 0.8, duration: 0.3 }}
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.72rem",
+            color: "var(--accent-gold)",
+          }}
+        >
+          {level}%
+        </motion.span>
+      </div>
+
+      {/* Track */}
+      <div
+        style={{
+          width: "100%",
+          height: "2px",
+          backgroundColor: "rgba(201,168,76,0.1)",
+          borderRadius: "1px",
+          overflow: "hidden",
+        }}
+      >
+        {/* Fill */}
+        <motion.div
+          initial={{ width: 0 }}
+          animate={isInView ? { width: `${level}%` } : {}}
+          transition={{
+            delay: index * 0.07 + 0.2,
+            duration: 0.9,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          style={{
+            height: "100%",
+            background:
+              "linear-gradient(90deg, var(--accent-gold-muted), var(--accent-gold))",
+            borderRadius: "1px",
+          }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+const CATEGORIES = ["Frontend", "Backend", "DevOps & Cloud", "AI & Tools"] as const;
+type Category = (typeof CATEGORIES)[number];
+
+export default function Skills() {
+  const [activeTab, setActiveTab] = useState<Category>("Frontend");
+  const sectionRef = useRef(null);
+  const isSectionInView = useInView(sectionRef, { once: true, margin: "-80px" });
+
+  const currentSkills = SKILLS[activeTab] ?? [];
+
+  return (
+    <section
+      id="skills"
+      ref={sectionRef}
+      style={{
+        padding: "120px 0",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* STACK watermark — subtle, clipped, behind everything */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          bottom: "-2rem",
+          left: "50%",
+          transform: "translateX(-50%)",
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(6rem, 18vw, 18rem)",
+          fontWeight: 700,
+          color: "rgba(201,168,76,0.018)",
+          letterSpacing: "0.1em",
+          whiteSpace: "nowrap",
+          pointerEvents: "none",
+          userSelect: "none",
+          zIndex: 0,
+          lineHeight: 1,
+        }}
+      >
         STACK
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10" ref={sectionRef}>
-        
-        {/* Header Section */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20%" }}
-          transition={{ duration: 0.8 }}
+      <div
+        className="max-w-7xl mx-auto px-6 lg:px-16"
+        style={{ position: "relative", zIndex: 1 }}
+      >
+        {/* Section label */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isSectionInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.72rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "var(--accent-gold)",
+            marginBottom: "1rem",
+          }}
         >
-          <div className="font-mono text-gold uppercase tracking-[0.15em] text-sm mb-6">
-            — Skills
-          </div>
-          <h2 className="font-display font-light text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] text-foreground whitespace-pre-line mb-4">
-            {"Technical\nArsenal."}
-          </h2>
-          <p className="font-body text-muted max-w-[500px] text-[1.05rem]">
-            Tools I use to build. Not a buzzword list — actual daily-driver skills.
-          </p>
-        </motion.div>
+          — Skills
+        </motion.p>
 
-        {/* Tabs Section */}
-        <Tabs defaultValue="Frontend" className="w-full max-w-4xl mx-auto">
-          
-          <TabsList className="w-full flex flex-wrap h-auto bg-transparent mb-12 border-b border-border/50 justify-start p-0 rounded-none gap-6 md:gap-10">
-            {Object.keys(SKILLS).map((category) => (
-              <TabsTrigger 
-                key={category} 
-                value={category}
-                className={cn(
-                  "px-0 py-3 rounded-none bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none",
-                  "font-body text-sm md:text-base text-muted tracking-wide transition-colors duration-300",
-                  "data-[state=active]:text-gold relative group"
-                )}
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isSectionInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 300,
+            fontSize: "clamp(2.4rem, 5vw, 4rem)",
+            lineHeight: 1.05,
+            color: "var(--text-primary)",
+            marginBottom: "0.75rem",
+          }}
+        >
+          Technical
+          <br />
+          Arsenal.
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isSectionInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.95rem",
+            color: "var(--text-muted)",
+            marginBottom: "3rem",
+            maxWidth: 480,
+          }}
+        >
+          Tools I reach for daily — not a buzzword list.
+        </motion.p>
+
+        {/* Two-column layout: tabs left, skills right */}
+        <div
+          className="skills-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "200px 1fr",
+            gap: "3rem",
+            alignItems: "start",
+          }}
+        >
+          {/* Tab list — vertical on desktop */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.25rem",
+              borderLeft: "1px solid var(--border)",
+              paddingLeft: "0",
+            }}
+          >
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveTab(cat)}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  textAlign: "left",
+                  padding: "0.6rem 1rem",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.875rem",
+                  fontWeight: activeTab === cat ? 500 : 400,
+                  color: activeTab === cat ? "var(--accent-gold)" : "var(--text-muted)",
+                  backgroundColor: "transparent",
+                  border: "none",
+                  borderLeft:
+                    activeTab === cat
+                      ? "2px solid var(--accent-gold)"
+                      : "2px solid transparent",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  letterSpacing: "0.01em",
+                }}
               >
-                {category}
-                {/* Active Tab Underline */}
-                <span className="absolute bottom-[-1px] left-0 w-full h-[2px] bg-gold scale-x-0 group-data-[state=active]:scale-x-100 origin-left transition-transform duration-300" />
-              </TabsTrigger>
+                {cat}
+              </button>
             ))}
-          </TabsList>
+          </div>
 
+          {/* Skills list — animated on tab change */}
           <AnimatePresence mode="wait">
-            {Object.entries(SKILLS).map(([category, skills]) => (
-              <TabsContent key={category} value={category} className="mt-0 outline-none">
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-8"
-                >
-                  {skills.map((skill, index) => (
-                    <motion.div 
-                      key={skill.name}
-                      custom={index}
-                      variants={skillRowVariants}
-                      initial="hidden"
-                      animate={isInView ? "visible" : "hidden"}
-                      transition={{ delay: index * 0.08 }} // Staggered entry
-                      className="group"
-                    >
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-body text-primary font-medium tracking-wide">
-                          {skill.name}
-                        </span>
-                        <motion.span 
-                          variants={percentVariants}
-                          initial="hidden"
-                          animate={isInView ? "visible" : "hidden"}
-                          className="font-mono text-gold text-xs"
-                        >
-                          {skill.level}%
-                        </motion.span>
-                      </div>
-                      <div className="w-full h-[2px] bg-card rounded-full overflow-hidden">
-                        <motion.div 
-                          className="h-full bg-gold"
-                          custom={skill.level}
-                          variants={barVariants}
-                          initial="hidden"
-                          animate={isInView ? "visible" : "hidden"}
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </TabsContent>
-            ))}
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: 12 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -8 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              style={{ minHeight: 280 }}
+            >
+              {currentSkills.map((skill, i) => (
+                <SkillBar
+                  key={skill.name}
+                  name={skill.name}
+                  level={skill.level}
+                  index={i}
+                />
+              ))}
+            </motion.div>
           </AnimatePresence>
-
-        </Tabs>
+        </div>
       </div>
+
+      {/* Mobile responsive fix */}
+      <style>{`
+        @media (max-width: 768px) {
+          .skills-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
