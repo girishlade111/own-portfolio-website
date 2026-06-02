@@ -9,10 +9,15 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
+      <div className="section-divider" />
       <About />
+      <div className="section-divider" />
       <Skills />
+      <div className="section-divider" />
       <FeaturedProjects />
+      <div className="section-divider" />
       <Testimonials />
+      <div className="section-divider" />
       <Contact />
     </main>
   );
