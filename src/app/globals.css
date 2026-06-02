@@ -68,3 +68,86 @@ body {
   z-index: 9999;
   opacity: 0.4;
 }
+
+/* ─── Section spacing consistency ─────────────────────────── */
+section {
+  position: relative;
+}
+
+/* Consistent section padding across all sections */
+.section-padding {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+}
+
+/* Thin gold divider between major sections */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.15) 20%,
+    rgba(201, 168, 76, 0.15) 80%,
+    transparent 100%
+  );
+  margin: 0;
+}
+
+/* Content max-width wrapper */
+.content-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .content-wrapper {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* ─── Typography scale fixes ───────────────────────────────── */
+
+/* Section label — reusable utility */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* Section heading — reusable utility */
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+/* ─── Z-index layering helpers ──────────────────────────────── */
+.watermark {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.section-content {
+  position: relative;
+  z-index: 1;
+}
