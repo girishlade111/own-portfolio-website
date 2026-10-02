@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Own Portfolio Website
 
-## Getting Started
+A modern, animated personal portfolio website built with **Next.js 14** (App Router), **React 18**, **Tailwind CSS**, and **Framer Motion** — showcasing projects, skills, blog posts, and testimonials, all from local content files (no database or login required).
 
-First, run the development server:
+## Features
+
+- **Animated hero & sections** — Framer Motion page transitions, scroll reveals, custom cursor, loader
+- **Projects showcase** — data-driven project cards from `src/lib/projects.ts`
+- **Skills section** — animated progress bars with tabbed categories
+- **Blog** — Markdown posts in `content/` rendered with `next-mdx-remote`, with reading-time estimates
+- **Testimonials** — curated client/peer quotes
+- **Contact section** — contact form UI (client-side)
+- **SEO-ready** — dynamic `sitemap.ts`, `robots.ts`, metadata
+- **Fully static** — builds to a static `out/` directory (`output: "export"`), deployable to any static host (GitHub Pages, Cloudflare Pages)
+
+## Tech Stack
+
+- Next.js 14.2 (App Router, static export) · React 18 · TypeScript
+- Tailwind CSS 3.4 · shadcn/ui components (Radix, class-variance-authority, clsx, tailwind-merge)
+- Framer Motion 12 · lucide-react icons
+- Blog: gray-matter + next-mdx-remote + reading-time
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # static export -> ./out
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/            # App Router pages (page.tsx, blog/, projects/, layout.tsx, sitemap.ts, robots.ts)
+├── components/
+│   ├── layout/     # Navbar, Footer, PageTransition
+│   ├── sections/   # Hero, About, Skills, FeaturedProjects, Testimonials, Contact
+│   └── ui/         # shadcn/ui primitives + CustomCursor, Loader, ScrollReveal
+├── lib/            # projects.ts, skills.ts, testimonials.ts, blog.ts, constants.ts
+content/            # Markdown blog posts
+public/             # static assets
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+Any static host works. The repo ships with `output: "export"` so `npm run build` produces a ready-to-serve `./out` directory. For GitHub Pages: push `out/` contents to the default branch and enable Pages (Settings → Pages → Deploy from branch).
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+MIT
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Built by Girish Lade** — [ladestack.in](https://ladestack.in)
